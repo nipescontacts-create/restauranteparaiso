@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<title>Restaurante El Paraíso · Cocina Griega Auténtica · Fortuna, Murcia</title>
+<meta name="description" content="Restaurante El Paraíso en Fortuna (Murcia). Auténtica cocina griega: moussaka, souvlaki, gyros, cordero. Terraza, reservas: 685 59 72 96." />
+<meta name="theme-color" content="#0a3d91" />
+<link rel="icon" href="assets/logo.png" />
+<meta property="og:title" content="Restaurante El Paraíso · Cocina Griega en Fortuna" />
+<meta property="og:description" content="Un pedacito de Grecia en el corazón de Fortuna. Reserva al 685 59 72 96." />
+<meta property="og:image" content="assets/terraza.jpg" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ SPLASH INTRO ============ -->
+<div id="splash" class="splash">
+  <div class="splash-cascade"></div>
+  <img src="assets/logo-splash.png" alt="El Paraíso" class="splash-logo" />
+</div>
+
+<!-- ============ FONDO CASCADA ANIMADO ============ -->
+<div class="bg-cascade" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+<div class="meander-top" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="#inicio" class="nav-brand">
+    <img src="assets/logo.png" alt="" />
+    <span>El Paraíso</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navLinks">
+    <a href="#sobre">Sobre Nosotros</a>
+    <a href="#carta">Carta</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#resenas">Rese&#241;as</a>
+    <a href="#ubicacion">Ubicaci&oacute;n</a>
+    <a href="#reservar" class="nav-cta">Reservar</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="inicio" class="hero reveal">
+  <div class="hero-inner">
+    <h1 class="title-greek">El Para&iacute;so</h1>
+    <p class="hero-sub">Aut&eacute;ntica cocina griega en Fortuna, Murcia</p>
+    <div class="hero-actions">
+      <a href="#reservar" class="button">
+        <div class="blob1"></div>
+        <div class="blob2"></div>
+        <div class="inner">Reservar Mesa</div>
+      </a>
+      <a href="#carta" class="button alt">
+        <div class="blob1"></div>
+        <div class="blob2"></div>
+        <div class="inner">Ver Carta</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE NOSOTROS ============ -->
+<section id="sobre" class="section reveal">
+  <h2 class="section-title">Sobre Nosotros</h2>
+  <div class="bgblue with-bougainvillea">
+    <div class="card">
+      <h3 class="card-title">Un pedacito de Grecia en el coraz&oacute;n de Fortuna</h3>
+      <p>En <strong>Restaurante El Para&iacute;so</strong>, creemos que la gastronom&iacute;a es un puente entre culturas. Lo que comenz&oacute; como un sue&ntilde;o familiar en la carretera de Pinoso, se ha convertido hoy en un referente de la cocina griega aut&eacute;ntica en la Regi&oacute;n de Murcia.</p>
+      <p>Nuestra cocina combina la frescura de los productos locales con las recetas tradicionales de Grecia: desde nuestro tierno cordero hasta la delicada masa filo y el yogur artesanal que nos define. En El Para&iacute;so no solo servimos comida; abrimos las puertas de nuestra casa para ofrecerte un ambiente acogedor, un trato cercano y un viaje de sabores que no olvidar&aacute;s.</p>
+    </div>
+  </div>
+
+  <div class="photo-frame reveal">
+    <img src="assets/terraza.jpg" alt="Terraza del Restaurante El Paraíso" />
+    <span class="photo-caption">Nuestra terraza griega</span>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section id="carta" class="section reveal">
+  <h2 class="section-title">La Carta</h2>
+  <p class="section-sub">Sabores aut&eacute;nticos del Mediterr&aacute;neo</p>
+
+  <!-- Iconos categorías estilo glass uiverse (relacionados con comida griega) -->
+  <div class="container glass-container">
+    <div data-text="Mediterr&aacute;neo" style="--r:-15;" class="glass">
+      <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 16C141.1 16 48 109.1 48 224c0 95.4 64.3 175.7 152 200.3V472c0 13.3 10.7 24 24 24h64c13.3 0 24-10.7 24-24v-47.7c87.7-24.6 152-104.9 152-200.3 0-114.9-93.1-208-208-208zm0 32c97.2 0 176 78.8 176 176 0 89.7-67.4 163.5-154.4 174.3-12 1.5-21.6 11.6-21.6 23.7v62H232v-62c0-12.1-9.5-22.2-21.6-23.7C123.4 387.5 56 313.7 56 224c0-97.2 78.8-176 200-176z"/></svg>
+    </div>
+    <div data-text="Carnes" style="--r:5;" class="glass">
+      <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M431.85 80.15a93.32 93.32 0 0 0-132 0L262.5 117.5l132 132 37.35-37.35a93.32 93.32 0 0 0 0-132zM239.87 140.13l-99.74 99.74c-30.18 30.18-39.21 75.62-22.85 115.16L13.5 458.81a16 16 0 0 0 22.62 22.63L139.83 377.7c39.5 16.34 84.94 7.31 115.16-22.85l99.74-99.74-115-115z"/></svg>
+    </div>
+    <div data-text="Del Mar" style="--r:25;" class="glass">
+      <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M180.5 141.5C219.7 108.5 272.6 80 336 80s116.3 28.5 155.5 61.5c39.1 33 65.9 72.4 79.9 99.8c4.7 9.2 4.7 20.1 0 29.3c-14 27.4-40.8 66.8-79.9 99.8C452.3 403.5 399.4 432 336 432s-116.3-28.5-155.5-61.5c-16.2-13.7-30.5-28.5-42.7-43.1L48.1 379.6c-12.5 7.3-28.4 5.3-38.7-4.9S-3 348.7 4.2 336.1L50 256 4.2 175.9c-7.2-12.6-5-28.4 5.3-38.6s26.1-12.2 38.7-4.9l89.7 52.3c12.2-14.6 26.5-29.4 42.7-43.1zM448 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+    </div>
+  </div>
+
+  <!-- Categorías de platos: 4 tarjetas equilibradas -->
+  <div class="menu-grid">
+
+    <!-- ENTRANTES (fríos + calientes + ensalada) -->
+    <div class="bgblue with-bougainvillea">
+      <div class="card menu-card">
+        <h3 class="menu-cat title-greek-mini">Entrantes &amp; Ensaladas</h3>
+        <ul class="menu-list">
+          <li><span>Ensalada Greci</span><b>10&euro;</b></li>
+          <li><span>Tzatziki <i>· dip de yogur, pepino y ajo</i></span><b>5&euro;</b></li>
+          <li><span>Tyrokafteri <i>· dip de queso feta</i></span><b>5&euro;</b></li>
+          <li><span>Melitzanosalata <i>· dip de berenjena</i></span><b>5&euro;</b></li>
+          <li><span>Houmous <i>· dip de garbanzos</i></span><b>5&euro;</b></li>
+          <li><span>Eleopolto <i>· pasta de aceitunas negras</i></span><b>5&euro;</b></li>
+          <li><span>Pikilia Krya <i>· 5 salsas con pan de pita</i></span><b>11&euro;</b></li>
+          <li><span>Feta Fournou <i>· feta al horno, ligeramente picante</i></span><b>5&euro;</b></li>
+          <li><span>Dolmadakia <i>· hojas de parra rellenas de arroz</i></span><b>5&euro;</b></li>
+          <li><span>Spanakopitakia <i>· pasteles de queso y espinacas</i></span><b>5&euro;</b></li>
+          <li><span>Tyrotipakia <i>· pasteles de queso feta</i></span><b>5&euro;</b></li>
+          <li><span>Vegetarian Croquettes</span><b>5&euro;</b></li>
+          <li><span>Gyro <i>· encima de pan pita con tzatziki</i></span><b>7&euro;</b></li>
+          <li><span>Pikilia Zesti <i>· entrantes calientes mixtos</i></span><b>14&euro;</b></li>
+          <li><span>Spanakopita <i>· espinacas y queso feta al horno</i></span><b>8&euro;</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CARNES DE RES Y CORDERO -->
+    <div class="bgblue with-bougainvillea">
+      <div class="card menu-card">
+        <h3 class="menu-cat title-greek-mini">Carnes &amp; Cordero</h3>
+        <ul class="menu-list">
+          <li><span>Moussaka <i>· capas de carne y berenjena al horno</i></span><b>14&euro;</b></li>
+          <li><span>Greek Hamburger <i>· con pita, tzatziki y patatas</i></span><b>10&euro;</b></li>
+          <li><span>Entrecote</span><b>16&euro;</b></li>
+          <li><span>Souvlaki <i>· brocheta de carne</i></span><b>16&euro;</b></li>
+          <li><span>Kleftiko <i>· paletilla de cordero al horno</i></span><b>18&euro;</b></li>
+          <li><span>Arni Flogera <i>· cordero envuelto en masa filo</i></span><b>16&euro;</b></li>
+          <li><span>Gyros <i>· kebab de cerdo</i></span><b>12&euro;</b></li>
+          <li><span>Solomillo de cerdo en pincho</span><b>12&euro;</b></li>
+          <li><span>Dendrolivano <i>· medallones de cerdo en salsa de romero</i></span><b>12&euro;</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- POLLO Y DEL MAR -->
+    <div class="bgblue with-bougainvillea">
+      <div class="card menu-card">
+        <h3 class="menu-cat title-greek-mini">Pollo &amp; Del Mar</h3>
+        <ul class="menu-list">
+          <li><span>Gyros Plate <i>· kebab de pollo</i></span><b>12&euro;</b></li>
+          <li><span>Riganalo <i>· pechuga en salsa de vino blanco y feta</i></span><b>12&euro;</b></li>
+          <li><span>Chicken Flogera <i>· wrap con pesto, tomate seco y feta</i></span><b>12&euro;</b></li>
+          <li><span>Souvlaki de pollo <i>· brocheta de pollo</i></span><b>12&euro;</b></li>
+          <li><span>Pechugas de pollo</span><b>8&euro;</b></li>
+          <li><span>Thalassina Floge <i>· gambas envueltas en pasta filo al horno</i></span><b>16&euro;</b></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MEZZE PARA DOS - banner horizontal completo al final -->
+  <div class="mezze-banner with-bougainvillea reveal">
+    <div class="mezze-inner">
+      <div class="mezze-left">
+        <span class="mezze-tag">Especialidad de la casa</span>
+        <h3 class="mezze-title">Mezze para Dos</h3>
+        <p class="mezze-desc">Un viaje compartido por los sabores de Grecia. Ideal para descubrir nuestra cocina en pareja.</p>
+      </div>
+      <div class="mezze-center">
+        <ul class="mezze-list">
+          <li>Pikilia Krya</li>
+          <li>Pikilia Zesti</li>
+          <li>Moussaka</li>
+          <li>Ensalada Griega</li>
+          <li>Postre</li>
+        </ul>
+      </div>
+      <div class="mezze-right">
+        <span class="mezze-price-big">36&euro;</span>
+        <span class="mezze-for">para 2 personas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="section reveal">
+  <h2 class="section-title">Servicios</h2>
+  <div class="services-grid">
+    <div class="bgblue with-bougainvillea">
+      <div class="card service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
+        </div>
+        <h3>Terraza</h3>
+        <p>Disfruta del ambiente mediterr&aacute;neo en nuestra t&iacute;pica terraza griega.</p>
+      </div>
+    </div>
+    <div class="bgblue">
+      <div class="card service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 10v8a2 2 0 002 2h8a2 2 0 002-2v-8M4 10h16M9 6V4h6v2"/></svg>
+        </div>
+        <h3>Tronas</h3>
+        <p>Disponemos de tronas para los m&aacute;s peque&ntilde;os de la familia.</p>
+      </div>
+    </div>
+    <div class="bgblue">
+      <div class="card service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Horario</h3>
+        <ul class="hours">
+          <li><span>Domingo</span><b>12:00 - 16:00</b></li>
+          <li><span>Lunes</span><b>9:00 - 17:00</b></li>
+          <li><span>Martes</span><b>Cerrado</b></li>
+          <li><span>Mi&eacute;rcoles</span><b>Cerrado</b></li>
+          <li><span>Jueves</span><b>9:00 - 17:00</b></li>
+          <li><span>Viernes</span><b>9:00 - 19:00</b></li>
+          <li><span>S&aacute;bado</span><b>9:00 - 19:00</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section id="resenas" class="section reveal">
+  <h2 class="section-title">Rese&#241;as</h2>
+
+  <div class="rating-bar">
+    <div class="rating-circle">
+      <svg viewBox="0 0 120 120" class="rating-ring">
+        <circle cx="60" cy="60" r="52" class="ring-bg"/>
+        <circle cx="60" cy="60" r="52" class="ring-fg" stroke-dasharray="326" stroke-dashoffset="13"/>
+      </svg>
+      <div class="rating-value">
+        <span class="rating-num">4.8</span>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+    </div>
+    <div class="rating-text">
+      <h3 class="title-greek-mini">Excelente</h3>
+      <p>Bas&aacute;ndose en las opiniones de nuestros clientes en Google.</p>
+      <a href="https://www.google.com/search?sa=X&sca_esv=1cd8785de84224e8&rlz=1C1CHBF_esES921ES921&sxsrf=ANbL-n7FWF0gt0sIkLmb4ni2rbzcSfF7ew:1776977806376&q=opiniones%20de%20restaurante%20el%20para%C3%ADso%20fortuna&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ2NDMxtLA0NTA0s7S0NLQ0MtvAyPiKUSe_IDMvMz8vtVghJVWhKLW4JLG0KDGvJFUhNUehILEo8fDa4nyFtPyiktK8xEWsJCkHAGCXxFp5AAAA&rldimm=11316418950169991926&tbm=lcl&hl=es-ES" target="_blank" rel="noopener" class="button mini">
+        <div class="blob1"></div>
+        <div class="blob2"></div>
+        <div class="inner">A&ntilde;adir Rese&#241;a</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="bgblue with-bougainvillea">
+      <div class="card review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <h4>Paola Acosta</h4>
+        <p>Un descubrimiento espectacular. La comida deliciosa y la atenci&oacute;n de 10. Los platos generosos y a buen precio. Aldo muy majo y siempre pendiente. Seguro volveremos con m&aacute;s amigos. La decoraci&oacute;n muy linda, una terraza griega y dentro su chimenea.</p>
+      </div>
+    </div>
+    <div class="bgblue">
+      <div class="card review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <h4>Cristina S&aacute;nchez</h4>
+        <p>El plato del cordero y el de pechuga de pollo espectaculares. De entrantes las bolitas de queso estaban incre&iacute;bles. La atenci&oacute;n inmejorable. Muchas gracias, volver&eacute;.</p>
+      </div>
+    </div>
+    <div class="bgblue with-bougainvillea">
+      <div class="card review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <h4>Adolfo Var&oacute;</h4>
+        <p>Es la primera vez que venimos a un restaurante griego. Est&aacute; todo muy bueno, comida mediterr&aacute;nea. Pedimos el men&uacute; degustaci&oacute;n y no pudimos terminarlo todo. Es muy econ&oacute;mico. Recomendable al cien por cien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UBICACIÓN ============ -->
+<section id="ubicacion" class="section reveal">
+  <h2 class="section-title">Ubicaci&oacute;n</h2>
+  <div class="bgblue">
+    <div class="card location-card">
+      <div class="loc-info">
+        <h3 class="title-greek-mini">D&oacute;nde estamos</h3>
+        <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+El+Para%C3%ADso+Ctra.+Pinoso+79+Fortuna+Murcia" target="_blank" rel="noopener" class="loc-address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ctra. Pinoso, 79, 30626 Fortuna, Murcia
+        </a>
+        <a href="tel:+34685597296" class="loc-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          685 59 72 96
+        </a>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Restaurante+El+Para%C3%ADso+Ctra.+Pinoso+79+Fortuna+Murcia" target="_blank" rel="noopener">
+        <iframe
+          src="https://www.google.com/maps?q=Ctra.+Pinoso+79,+30626+Fortuna,+Murcia&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa El Para&iacute;so"></iframe>
+        <span class="map-overlay">Abrir en Google Maps</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVAR ============ -->
+<section id="reservar" class="section reveal">
+  <h2 class="section-title">Reservar</h2>
+  <div class="bgblue with-bougainvillea reserve-wrap">
+    <div class="card reserve-card">
+      <h3 class="title-greek-mini">&iquest;Listo para tu viaje a Grecia?</h3>
+      <p>Ll&aacute;manos para reservar tu mesa. Te esperamos con los brazos abiertos.</p>
+      <a href="tel:+34685597296" class="button big">
+        <div class="blob1"></div>
+        <div class="blob2"></div>
+        <div class="inner">Llamar 685 59 72 96</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <img src="assets/logo.png" alt="" class="foot-logo" />
+  <p class="title-greek-mini">El Para&iacute;so</p>
+  <p>Ctra. Pinoso, 79 · 30626 Fortuna, Murcia · 685 59 72 96</p>
+  <p class="copy">&copy; <span id="year"></span> Restaurante El Para&iacute;so. Todos los derechos reservados.</p>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a href="https://wa.me/34685597296" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2c2.2 1.2 4.7 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.2c-2.5 0-4.8-.7-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.8 20.7 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.7-13 12.7zm7.4-9.5c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.5.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.5-.7.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.7c.2.2 2.4 3.7 5.9 5.2.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.4-.3-.8-.5z"/>
+  </svg>
+</a>
+
+<!-- ============ COOKIE BAR ============ -->
+<div id="cookie" class="cookie">
+  <div class="cookie-card">
+    <p>Usamos cookies para ofrecerte la mejor experiencia. Consulta nuestra pol&iacute;tica de privacidad.</p>
+    <div class="cookie-actions">
+      <button class="button mini" data-cookie="reject">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="inner">Rechazar</div>
+      </button>
+      <button class="button mini" data-cookie="accept">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="inner">Aceptar</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
