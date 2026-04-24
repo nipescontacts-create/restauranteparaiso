@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>El Paraíso — Cocina Griega · Fortuna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=GFS+Didot&family=Raleway:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   CSS VARIABLES & RESET
+   ========================================================= */
+:root {
+  --blue-deep:   #0d2a5e;
+  --blue-mid:    #1a4fa0;
+  --blue-bright: #2575e8;
+  --blue-neon:   #3b9eff;
+  --blue-glow:   rgba(59,158,255,0.45);
+  --blue-pale:   #bbd8ff;
+  --white:       #ffffff;
+  --cream:       #f4f8ff;
+  --gold:        #c9a84c;
+  --gold-light:  #e8d48e;
+  --shadow-neon: 0 0 18px rgba(59,158,255,0.5), 0 0 40px rgba(59,158,255,0.2);
+  --card-shadow: 0 4px 24px rgba(59,158,255,0.25), 0 0 0 1.5px rgba(59,158,255,0.18);
+  --radius: 18px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:'Raleway',sans-serif;
+  background:var(--cream);
+  color:var(--blue-deep);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* =========================================================
+   INTRO SPLASH
+   ========================================================= */
+#splash{
+  position:fixed;inset:0;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+  transition:opacity 0.7s ease, visibility 0.7s ease;
+}
+#splash.gone{opacity:0;visibility:hidden;pointer-events:none;}
+#splash img{
+  width:min(340px,75vw);
+  animation:splashPulse 3s ease forwards;
+}
+@keyframes splashPulse{
+  0%{opacity:0;transform:scale(0.8);}
+  20%{opacity:1;transform:scale(1);}
+  80%{opacity:1;transform:scale(1);}
+  100%{opacity:0;transform:scale(1.05);}
+}
+
+/* =========================================================
+   ANIMATED BACKGROUND
+   ========================================================= */
+.wave-bg{
+  position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(160deg,#e8f2ff 0%,#fff 40%,#daeeff 70%,#fff 100%);
+  overflow:hidden;
+}
+.wave-bg::before,.wave-bg::after,.wave-bg .w3{
+  content:'';position:absolute;
+  width:170%;height:170%;
+  border-radius:40% 60% 65% 35% / 40% 50% 50% 60%;
+  opacity:0.13;
+}
+.wave-bg::before{
+  background:radial-gradient(ellipse,var(--blue-bright),var(--blue-neon));
+  top:-40%;left:-25%;
+  animation:wm1 11s ease-in-out infinite alternate;
+}
+.wave-bg::after{
+  background:radial-gradient(ellipse,var(--blue-deep),var(--blue-mid));
+  top:15%;right:-35%;opacity:0.1;
+  animation:wm2 14s ease-in-out infinite alternate;
+}
+.wave-bg .w3{
+  background:radial-gradient(ellipse,var(--blue-neon),var(--blue-pale));
+  bottom:-25%;left:5%;opacity:0.12;
+  animation:wm3 17s ease-in-out infinite alternate;
+}
+@keyframes wm1{0%{border-radius:40% 60% 65% 35% / 40% 50% 50% 60%;transform:translate(0,0) rotate(0deg);}100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;transform:translate(4%,9%) rotate(14deg);}}
+@keyframes wm2{0%{border-radius:55% 45% 60% 40%/50% 60% 40% 50%;transform:translate(0,0) rotate(0deg);}100%{border-radius:35% 65% 45% 55%/40% 50% 60% 60%;transform:translate(-7%,6%) rotate(-18deg);}}
+@keyframes wm3{0%{border-radius:30% 70% 50% 50%/55% 45% 55% 45%;transform:translate(0,0) rotate(0deg);}100%{border-radius:65% 35% 40% 60%/45% 65% 35% 55%;transform:translate(5%,-9%) rotate(22deg);}}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:58px;
+  background:rgba(10,30,75,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(59,158,255,0.2);
+  box-shadow:0 2px 20px rgba(0,0,0,0.3);
+}
+.nav-wrap{
+  max-width:1100px;margin:0 auto;
+  height:100%;padding:0 1.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'Cinzel',serif;font-size:1rem;font-weight:700;
+  color:var(--blue-pale);letter-spacing:0.06em;
+  text-shadow:0 0 12px var(--blue-neon);
+}
+.nav-logo span{color:var(--gold-light);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{
+  padding:0 0.7rem;
+  font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(187,216,255,0.8);
+  line-height:58px;transition:color 0.25s;
+}
+.nav-links a:hover{color:var(--gold-light);}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.ham span{width:24px;height:2px;background:var(--blue-pale);border-radius:2px;display:block;transition:all 0.3s;}
+.mob-menu{
+  display:none;position:fixed;top:58px;left:0;right:0;
+  background:rgba(8,22,60,0.97);backdrop-filter:blur(20px);
+  z-index:899;padding:0.8rem 0;
+  border-bottom:1px solid rgba(59,158,255,0.15);
+}
+.mob-menu.open{display:block;}
+.mob-menu a{
+  display:block;padding:0.8rem 1.8rem;
+  color:var(--blue-pale);font-size:0.82rem;
+  letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  border-bottom:1px solid rgba(59,158,255,0.08);
+  transition:color 0.25s,background 0.25s;
+}
+.mob-menu a:hover{color:var(--gold-light);background:rgba(59,158,255,0.07);}
+
+/* =========================================================
+   WHATSAPP FLOAT
+   ========================================================= */
+.wa-float{
+  position:fixed;bottom:24px;right:20px;z-index:800;
+  width:54px;height:54px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.5);
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.7);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+.sr{
+  opacity:0;transform:translateY(44px);
+  transition:opacity 0.75s ease,transform 0.75s ease;
+}
+.sr.vis{opacity:1;transform:translateY(0);}
+.sr.d1{transition-delay:0.1s;}.sr.d2{transition-delay:0.2s;}
+.sr.d3{transition-delay:0.3s;}.sr.d4{transition-delay:0.4s;}
+
+/* =========================================================
+   SECTION BASE
+   ========================================================= */
+section{padding:5rem 1.4rem;}
+.inner{max-width:1040px;margin:0 auto;}
+
+.sec-label{
+  font-family:'Raleway',sans-serif;font-size:0.72rem;font-weight:600;
+  letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--blue-bright);margin-bottom:0.4rem;
+}
+h2.sec-title{
+  font-family:'Cinzel',serif;font-size:clamp(1.6rem,4.5vw,2.6rem);
+  font-weight:700;color:var(--blue-deep);line-height:1.2;margin-bottom:0.6rem;
+}
+h2.sec-title span{
+  color:var(--blue-bright);
+  text-shadow:0 0 20px rgba(37,117,232,0.4);
+}
+.sec-rule{
+  display:flex;align-items:center;gap:0.8rem;margin-bottom:2.4rem;
+}
+.sec-rule::after{
+  content:'';flex:1;height:1px;max-width:180px;
+  background:linear-gradient(90deg,var(--blue-neon),transparent);
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--blue-neon);box-shadow:0 0 8px var(--blue-neon);flex-shrink:0;}
+
+/* =========================================================
+   CARD BASE
+   ========================================================= */
+.card{
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:1.5px solid rgba(59,158,255,0.18);
+  overflow:hidden;
+  transition:transform 0.32s,box-shadow 0.32s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 36px rgba(59,158,255,0.35),0 0 0 1.5px rgba(59,158,255,0.3);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+#inicio{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding-top:90px;padding-bottom:3rem;
+  position:relative;
+}
+.hero-logo{
+  width:min(220px,55vw);margin:0 auto 1.6rem;
+  animation:heroFade 1.2s ease forwards 0.2s;opacity:0;
+  filter:drop-shadow(0 0 18px rgba(37,117,232,0.35));
+}
+@keyframes heroFade{from{opacity:0;transform:scale(0.88);}to{opacity:1;transform:scale(1);}}
+.hero-sub{
+  font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.38em;text-transform:uppercase;
+  color:var(--blue-bright);margin-bottom:1rem;
+  opacity:0;animation:fadeUp 0.9s ease forwards 0.6s;
+}
+h1.hero-h1{
+  font-family:'Cinzel',serif;font-size:clamp(2.2rem,9vw,5rem);
+  font-weight:900;color:var(--blue-deep);line-height:1.1;
+  text-shadow:0 0 40px rgba(37,117,232,0.15);
+  opacity:0;animation:fadeUp 0.9s ease forwards 0.8s;
+}
+h1.hero-h1 .gold{color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,0.4);}
+.hero-tag{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.35rem);color:#4a6fa5;
+  margin:0.9rem 0 2rem;
+  opacity:0;animation:fadeUp 0.9s ease forwards 1s;
+}
+.hero-photo-wrap{
+  position:relative;width:100%;max-width:620px;margin:0 auto 2rem;
+  opacity:0;animation:fadeUp 0.9s ease forwards 1.2s;
+}
+.hero-photo{
+  width:100%;height:260px;object-fit:cover;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-neon);
+  border:2px solid rgba(59,158,255,0.3);
+}
+/* Bougainvillea SVG on hero photo */
+.bugn-hero{
+  position:absolute;top:-30px;right:-15px;
+  width:110px;pointer-events:none;
+  filter:drop-shadow(0 2px 8px rgba(200,60,100,0.25));
+  animation:sway 6s ease-in-out infinite;
+}
+@keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+.cta-row{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.9s ease forwards 1.4s;
+}
+.btn-neon{
+  padding:0.75rem 2rem;border-radius:50px;
+  font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  background:var(--blue-deep);color:var(--blue-pale);
+  border:2px solid var(--blue-neon);
+  box-shadow:0 0 14px rgba(59,158,255,0.4),inset 0 0 10px rgba(59,158,255,0.1);
+  cursor:pointer;transition:all 0.3s;
+}
+.btn-neon:hover{
+  background:var(--blue-neon);color:#fff;
+  box-shadow:0 0 28px rgba(59,158,255,0.7),0 0 60px rgba(59,158,255,0.3);
+  transform:translateY(-2px);
+}
+.btn-neon.gold-btn{
+  background:#fff;color:var(--gold);
+  border-color:var(--gold);
+  box-shadow:0 0 14px rgba(201,168,76,0.3);
+}
+.btn-neon.gold-btn:hover{
+  background:var(--gold);color:#fff;
+  box-shadow:0 0 28px rgba(201,168,76,0.6);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* =========================================================
+   NOSOTROS
+   ========================================================= */
+#nosotros{background:rgba(255,255,255,0.55);backdrop-filter:blur(6px);}
+.nos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:start;
+}
+.nos-text p{
+  font-family:'Playfair Display',serif;font-size:1.02rem;line-height:1.85;
+  color:#2a3d6a;margin-bottom:1.3rem;
+}
+.schedule-card{
+  background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue-mid) 100%);
+  border-radius:var(--radius);padding:1.8rem;
+  border:1.5px solid rgba(59,158,255,0.3);
+  box-shadow:var(--shadow-neon);margin-top:1.5rem;
+}
+.sch-title{
+  font-family:'Cinzel',serif;font-size:0.78rem;font-weight:600;
+  color:var(--gold-light);letter-spacing:0.2em;margin-bottom:1.2rem;
+}
+.sch-row{
+  display:flex;justify-content:space-between;
+  padding:0.45rem 0;border-bottom:1px solid rgba(255,255,255,0.07);
+  font-size:0.85rem;
+}
+.sch-row:last-child{border:none;}
+.sch-day{color:var(--blue-pale);font-weight:500;}
+.sch-time{color:var(--gold-light);font-weight:600;}
+.sch-closed{color:rgba(255,255,255,0.3);font-style:italic;}
+.nos-img-wrap{position:relative;}
+.nos-img{
+  width:100%;height:360px;object-fit:cover;
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:2px solid rgba(59,158,255,0.2);
+}
+/* Bougainvillea on nosotros card */
+.bugn-nos{
+  position:absolute;bottom:-20px;left:-18px;
+  width:90px;pointer-events:none;
+  filter:drop-shadow(0 2px 6px rgba(200,60,100,0.2));
+  animation:sway 8s ease-in-out infinite;
+}
+
+/* =========================================================
+   CARTA
+   ========================================================= */
+#carta{background:rgba(240,248,255,0.4);}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:1.4rem;
+}
+.menu-cat{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:1.5px solid rgba(59,158,255,0.18);
+  border-top:3px solid var(--blue-neon);
+  padding:1.5rem;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.menu-cat:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 36px rgba(59,158,255,0.3),0 0 0 1.5px rgba(59,158,255,0.25);
+}
+.cat-title{
+  font-family:'Cinzel',serif;font-size:0.75rem;font-weight:700;
+  color:var(--blue-deep);letter-spacing:0.14em;text-transform:uppercase;
+  padding-bottom:0.75rem;margin-bottom:0.75rem;
+  border-bottom:1px solid var(--blue-pale);
+}
+.mi{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:0.5rem;padding:0.45rem 0;
+  border-bottom:1px dashed rgba(59,158,255,0.12);
+}
+.mi:last-child{border:none;}
+.mi-name{
+  font-family:'Raleway',sans-serif;font-weight:600;font-size:0.82rem;
+  color:var(--blue-deep);flex:1;
+}
+.mi-desc{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:0.73rem;
+  color:#7a90bb;margin-top:2px;
+}
+.mi-price{
+  font-family:'Cinzel',serif;font-size:0.75rem;font-weight:600;
+  color:var(--gold);white-space:nowrap;flex-shrink:0;
+  text-shadow:0 0 8px rgba(201,168,76,0.3);
+}
+/* Mezze special */
+.mezze-card{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,var(--blue-deep),#0a2050);
+  border-radius:var(--radius);
+  border:2px solid var(--gold);
+  padding:2.4rem;text-align:center;
+  box-shadow:0 0 30px rgba(201,168,76,0.25),var(--shadow-neon);
+  position:relative;overflow:hidden;
+}
+.mezze-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(201,168,76,0.08) 0%,transparent 70%);
+}
+.mezze-t{
+  font-family:'Cinzel',serif;font-size:1rem;font-weight:700;
+  color:var(--gold-light);letter-spacing:0.18em;margin-bottom:0.4rem;
+}
+.mezze-p{
+  font-family:'Cinzel',serif;font-size:3rem;font-weight:900;
+  color:var(--gold);line-height:1;
+  text-shadow:0 0 20px rgba(201,168,76,0.5);
+}
+.mezze-items{
+  font-family:'Playfair Display',serif;font-style:italic;
+  color:var(--blue-pale);font-size:0.95rem;line-height:1.9;margin-top:0.5rem;
+}
+
+/* =========================================================
+   SERVICIOS
+   ========================================================= */
+#servicios{background:rgba(255,255,255,0.6);}
+.serv-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.4rem;
+}
+.serv-card{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:1.5px solid rgba(59,158,255,0.18);
+  padding:2rem 1.4rem;text-align:center;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.serv-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 24px rgba(59,158,255,0.4),0 0 0 2px rgba(59,158,255,0.25);
+}
+.serv-icon{
+  width:48px;height:48px;margin:0 auto 1rem;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-bright),var(--blue-neon));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 16px rgba(59,158,255,0.4);
+}
+.serv-icon svg{width:24px;height:24px;fill:#fff;stroke:none;}
+.serv-name{
+  font-family:'Cinzel',serif;font-size:0.75rem;font-weight:700;
+  color:var(--blue-deep);letter-spacing:0.1em;margin-bottom:0.5rem;
+}
+.serv-desc{
+  font-family:'Raleway',sans-serif;font-size:0.78rem;color:#7a90bb;line-height:1.5;
+}
+.contact-band{
+  margin-top:2.4rem;padding:2rem;
+  background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-neon);
+  display:flex;gap:2rem;flex-wrap:wrap;align-items:center;
+}
+.ci{display:flex;align-items:center;gap:1rem;}
+.ci-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(59,158,255,0.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ci-icon svg{width:18px;height:18px;fill:var(--blue-pale);}
+.ci-label{
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(187,216,255,0.6);margin-bottom:0.15rem;font-weight:600;
+}
+.ci-val a,.ci-val{
+  font-family:'Raleway',sans-serif;font-size:0.92rem;font-weight:600;
+  color:var(--gold-light);text-decoration:none;transition:color 0.25s;
+}
+.ci-val a:hover{color:#fff;}
+
+/* =========================================================
+   RESEÑAS
+   ========================================================= */
+#resenas{background:rgba(230,243,255,0.35);}
+/* Rating bar */
+.rating-bar{
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;
+  padding:2rem;
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:1.5px solid rgba(59,158,255,0.18);
+  margin-bottom:2rem;flex-wrap:wrap;
+}
+.rating-circle-wrap{display:flex;flex-direction:column;align-items:center;gap:0.4rem;}
+.r-ring{position:relative;width:140px;height:140px;flex-shrink:0;}
+.r-ring svg{width:140px;height:140px;transform:rotate(-90deg);}
+.r-bg{fill:none;stroke:var(--blue-pale);stroke-width:10;}
+.r-fg{
+  fill:none;stroke:var(--gold);stroke-width:10;stroke-linecap:round;
+  stroke-dasharray:376;stroke-dashoffset:376;
+  transition:stroke-dashoffset 2s cubic-bezier(0.22,1,0.36,1);
+  filter:drop-shadow(0 0 6px rgba(201,168,76,0.6));
+}
+.r-ring.go .r-fg{stroke-dashoffset:30;}
+.r-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.r-num{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:900;color:var(--blue-deep);}
+.r-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;text-shadow:0 0 6px rgba(201,168,76,0.5);}
+.r-label{font-family:'Raleway',sans-serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue-bright);}
+.r-badge{
+  background:var(--blue-deep);color:var(--gold-light);
+  font-family:'Raleway',sans-serif;font-size:0.65rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.3rem 0.9rem;border-radius:50px;
+  box-shadow:0 0 10px rgba(59,158,255,0.3);
+}
+/* Rating summary text beside circle */
+.r-summary{max-width:280px;}
+.r-summary-num{font-family:'Cinzel',serif;font-size:3.5rem;font-weight:900;color:var(--blue-deep);line-height:1;}
+.r-summary-text{font-family:'Raleway',sans-serif;font-size:0.82rem;color:#5a7099;margin-top:0.4rem;line-height:1.5;}
+
+/* 3-column reviews */
+.reviews-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.rev-card{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  border:1.5px solid rgba(59,158,255,0.18);
+  border-left:3.5px solid var(--gold);
+  padding:1.5rem;
+  transition:transform 0.3s,box-shadow 0.3s;
+  display:flex;flex-direction:column;gap:0.7rem;
+}
+.rev-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 32px rgba(59,158,255,0.28),0 0 0 1.5px rgba(59,158,255,0.22);
+}
+.rev-name{
+  font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;
+  color:var(--blue-deep);letter-spacing:0.08em;
+}
+.rev-stars{color:var(--gold);font-size:0.82rem;letter-spacing:2px;text-shadow:0 0 5px rgba(201,168,76,0.4);}
+.rev-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:0.9rem;color:#4a6085;line-height:1.65;flex:1;
+}
+.add-rev{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  margin-top:1.8rem;
+  padding:0.8rem 1.8rem;border-radius:50px;
+  font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--blue-deep);
+  border:2px solid var(--gold);
+  background:rgba(255,255,255,0.8);
+  transition:all 0.3s;
+}
+.add-rev:hover{
+  background:var(--gold);color:#fff;
+  box-shadow:0 0 22px rgba(201,168,76,0.5);
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   UBICACION
+   ========================================================= */
+#ubicacion{background:rgba(255,255,255,0.6);}
+.map-wrap{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-neon);border:2px solid rgba(59,158,255,0.3);
+}
+.map-wrap iframe{width:100%;height:380px;border:none;display:block;filter:saturate(0.75) hue-rotate(185deg);}
+.map-foot{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.2rem 1.6rem;
+  background:linear-gradient(0deg,rgba(10,30,75,0.95) 0%,transparent);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;
+}
+.map-addr{font-family:'Raleway',sans-serif;font-size:0.85rem;color:var(--blue-pale);}
+.map-addr strong{display:block;font-family:'Cinzel',serif;font-size:0.68rem;color:var(--gold-light);letter-spacing:0.12em;margin-bottom:0.2rem;}
+.map-btn{
+  padding:0.5rem 1.2rem;border-radius:50px;
+  background:var(--gold);color:var(--blue-deep);
+  font-family:'Raleway',sans-serif;font-size:0.72rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  white-space:nowrap;transition:all 0.25s;
+}
+.map-btn:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* =========================================================
+   RESERVAR
+   ========================================================= */
+#reservar{background:rgba(230,243,255,0.3);}
+.res-inner{
+  max-width:520px;margin:0 auto;text-align:center;
+}
+.res-inner .sec-rule{justify-content:center;}
+.res-tagline{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.05rem;color:#4a6085;margin-bottom:2rem;line-height:1.65;
+}
+.res-phone{
+  display:block;
+  font-family:'Cinzel',serif;font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:900;color:var(--blue-deep);
+  margin:1.2rem 0;
+  text-shadow:0 0 20px rgba(37,117,232,0.25);
+  transition:color 0.3s;
+}
+.res-phone:hover{color:var(--blue-neon);}
+.res-note{
+  font-family:'Raleway',sans-serif;font-size:0.82rem;
+  color:#7a90bb;margin-top:1rem;
+}
+.res-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem;}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{
+  background:var(--blue-deep);color:var(--blue-pale);
+  padding:2.5rem 1.4rem;text-align:center;
+}
+.ft-logo{
+  font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;
+  color:var(--gold-light);margin-bottom:0.4rem;
+  text-shadow:0 0 14px rgba(201,168,76,0.35);
+}
+.ft-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:0.88rem;color:rgba(187,216,255,0.5);
+}
+.ft-copy{font-size:0.7rem;color:rgba(187,216,255,0.3);margin-top:1rem;}
+
+/* =========================================================
+   BOUGAINVILLEA SVG (inline, reusable)
+   ========================================================= */
+.bugn{pointer-events:none;position:absolute;}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:900px){
+  .nos-grid{grid-template-columns:1fr;}
+  .nos-img{height:240px;}
+  .reviews-cols{grid-template-columns:1fr;}
+}
+@media(max-width:700px){
+  .nav-links{display:none;}
+  .ham{display:flex;}
+  section{padding:3.5rem 1.2rem;}
+  .rating-bar{flex-direction:column;gap:1.5rem;}
+  .reviews-cols{grid-template-columns:1fr;}
+  .contact-band{flex-direction:column;gap:1.2rem;}
+  .map-foot{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:480px){
+  .cta-row,.res-ctas{flex-direction:column;align-items:center;}
+  .btn-neon{width:100%;text-align:center;}
+  .menu-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── WAVE BG ── -->
+<div class="wave-bg"><div class="w3"></div></div>
+
+<!-- ── SPLASH ── -->
+<div id="splash">
+  <img src="Gemini_Generated_Image_kcrr7mkcrr7mkcrr.png" alt="El Paraíso Logo">
+</div>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a class="wa-float" href="https://wa.me/34685597296" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-wrap">
+    <a href="#inicio" class="nav-logo">El <span>Paraíso</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#reservar">Reservar</a></li>
+    </ul>
+    <button class="ham" onclick="toggleMob()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#nosotros" onclick="closeMob()">Nosotros</a>
+  <a href="#carta" onclick="closeMob()">Carta</a>
+  <a href="#servicios" onclick="closeMob()">Servicios</a>
+  <a href="#resenas" onclick="closeMob()">Reseñas</a>
+  <a href="#ubicacion" onclick="closeMob()">Ubicación</a>
+  <a href="#reservar" onclick="closeMob()">Reservar</a>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════ -->
+<section id="inicio">
+  <div class="inner" style="text-align:center;">
+    <img class="hero-logo" src="Gemini_Generated_Image_kcrr7mkcrr7mkcrr.png" alt="El Paraíso">
+    <p class="hero-sub">Cocina Griega Auténtica · Fortuna, Murcia</p>
+    <h1 class="hero-h1">Restaurante<br><span class="gold">El Paraíso</span></h1>
+    <p class="hero-tag">Un pedacito de Grecia en el corazón de la Región de Murcia</p>
+
+    <div class="hero-photo-wrap">
+      <!-- Bougainvillea SVG decoration -->
+      <svg class="bugn-hero" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.9">
+          <!-- Main stem -->
+          <path d="M60 160 C58 130 55 110 50 90 C45 70 40 55 42 35 C44 15 55 5 60 0" stroke="#6B3A4A" stroke-width="2" fill="none"/>
+          <!-- Branch right 1 -->
+          <path d="M55 100 C70 95 85 90 95 80" stroke="#6B3A4A" stroke-width="1.5" fill="none"/>
+          <!-- Branch left 1 -->
+          <path d="M52 75 C38 68 25 60 18 48" stroke="#6B3A4A" stroke-width="1.5" fill="none"/>
+          <!-- Branch right 2 -->
+          <path d="M51 50 C64 44 78 38 88 28" stroke="#6B3A4A" stroke-width="1.5" fill="none"/>
+          <!-- Flowers cluster 1 (right) -->
+          <circle cx="95" cy="78" r="6" fill="#E8547A" opacity="0.9"/>
+          <circle cx="102" cy="72" r="5" fill="#D4406A" opacity="0.85"/>
+          <circle cx="96" cy="69" r="4" fill="#F06888" opacity="0.8"/>
+          <circle cx="88" cy="75" r="5" fill="#E8547A" opacity="0.75"/>
+          <circle cx="100" cy="80" r="4" fill="#D4406A" opacity="0.7"/>
+          <!-- Flowers cluster 2 (left) -->
+          <circle cx="18" cy="46" r="6" fill="#E8547A" opacity="0.9"/>
+          <circle cx="10" cy="40" r="5" fill="#D4406A" opacity="0.85"/>
+          <circle cx="14" cy="50" r="4" fill="#F06888" opacity="0.8"/>
+          <circle cx="22" cy="44" r="5" fill="#E8547A" opacity="0.75"/>
+          <!-- Flowers cluster 3 (top right) -->
+          <circle cx="88" cy="26" r="5" fill="#E8547A" opacity="0.9"/>
+          <circle cx="95" cy="20" r="4" fill="#D4406A" opacity="0.85"/>
+          <circle cx="82" cy="22" r="4" fill="#F06888" opacity="0.8"/>
+          <!-- Leaves -->
+          <ellipse cx="72" cy="92" rx="7" ry="4" fill="#3D7A4A" opacity="0.7" transform="rotate(-30 72 92)"/>
+          <ellipse cx="30" cy="55" rx="6" ry="3.5" fill="#3D7A4A" opacity="0.7" transform="rotate(20 30 55)"/>
+          <ellipse cx="78" cy="35" rx="6" ry="3.5" fill="#3D7A4A" opacity="0.65" transform="rotate(-40 78 35)"/>
+          <ellipse cx="50" cy="120" rx="7" ry="4" fill="#3D7A4A" opacity="0.6" transform="rotate(10 50 120)"/>
+        </g>
+      </svg>
+      <img class="hero-photo" src="1776979146765_image.png" alt="Terraza El Paraíso">
+    </div>
+
+    <div class="cta-row">
+      <a href="#carta" class="btn-neon">Ver la Carta</a>
+      <a href="tel:+34685597296" class="btn-neon gold-btn">Reservar Mesa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     SOBRE NOSOTROS
+════════════════════════════════════════════════════════ -->
+<section id="nosotros">
+  <div class="inner">
+    <div class="sr">
+      <p class="sec-label">Nuestra Historia</p>
+      <h2 class="sec-title">Sobre <span>Nosotros</span></h2>
+      <div class="sec-rule"><div class="dot"></div></div>
+    </div>
+
+    <div class="nos-grid">
+      <div class="nos-text sr d1">
+        <p>En <strong>Restaurante El Paraíso</strong>, creemos que la gastronomía es un puente entre culturas. Lo que comenzó como un sueño familiar en la carretera de Pinoso, se ha convertido hoy en un referente de la cocina griega auténtica en la Región de Murcia.</p>
+        <p>Nuestra cocina combina la frescura de los productos locales con las recetas tradicionales de Grecia: desde nuestro tierno cordero hasta la delicada masa filo y el yogur artesanal que nos define. En El Paraíso no solo servimos comida; abrimos las puertas de nuestra casa.</p>
+
+        <div class="schedule-card">
+          <div class="sch-title">Horario de Apertura</div>
+          <div class="sch-row"><span class="sch-day">Domingo</span><span class="sch-time">12:00 – 16:00</span></div>
+          <div class="sch-row"><span class="sch-day">Lunes</span><span class="sch-time">9:00 – 17:00</span></div>
+          <div class="sch-row"><span class="sch-day">Martes</span><span class="sch-closed">Cerrado</span></div>
+          <div class="sch-row"><span class="sch-day">Miércoles</span><span class="sch-closed">Cerrado</span></div>
+          <div class="sch-row"><span class="sch-day">Jueves</span><span class="sch-time">9:00 – 17:00</span></div>
+          <div class="sch-row"><span class="sch-day">Viernes</span><span class="sch-time">9:00 – 19:00</span></div>
+          <div class="sch-row"><span class="sch-day">Sábado</span><span class="sch-time">9:00 – 19:00</span></div>
+        </div>
+      </div>
+
+      <div class="nos-img-wrap sr d2">
+        <img class="nos-img" src="1776979146765_image.png" alt="Restaurante El Paraíso">
+        <!-- Bougainvillea bottom-left on card -->
+        <svg class="bugn-nos" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 130 C48 105 46 88 42 70 C38 52 34 40 36 22 C38 8 46 1 50 0" stroke="#6B3A4A" stroke-width="2" fill="none"/>
+          <path d="M45 80 C60 75 74 68 82 58" stroke="#6B3A4A" stroke-width="1.5" fill="none"/>
+          <path d="M43 55 C30 48 18 40 12 30" stroke="#6B3A4A" stroke-width="1.5" fill="none"/>
+          <circle cx="82" cy="56" r="5" fill="#E8547A" opacity="0.9"/>
+          <circle cx="89" cy="50" r="4" fill="#D4406A" opacity="0.85"/>
+          <circle cx="84" cy="47" r="3.5" fill="#F06888" opacity="0.8"/>
+          <circle cx="76" cy="53" r="4" fill="#E8547A" opacity="0.75"/>
+          <circle cx="12" cy="28" r="5" fill="#E8547A" opacity="0.9"/>
+          <circle cx="6" cy="22" r="4" fill="#D4406A" opacity="0.85"/>
+          <circle cx="16" cy="22" r="3.5" fill="#F06888" opacity="0.8"/>
+          <ellipse cx="64" cy="72" rx="6" ry="3.5" fill="#3D7A4A" opacity="0.7" transform="rotate(-25 64 72)"/>
+          <ellipse cx="22" cy="36" rx="5" ry="3" fill="#3D7A4A" opacity="0.7" transform="rotate(15 22 36)"/>
+        </svg>
+        <p style="margin-top:1rem;font-family:'Playfair Display',serif;font-style:italic;font-size:0.85rem;color:var(--blue-bright);text-align:center;">Nuestra terraza mediterránea bajo el sol de Murcia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CARTA
+════════════════════════════════════════════════════════ -->
+<section id="carta">
+  <div class="inner">
+    <div class="sr">
+      <p class="sec-label">Gastronomía Griega Auténtica</p>
+      <h2 class="sec-title">Nuestra <span>Carta</span></h2>
+      <div class="sec-rule"><div class="dot"></div></div>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-cat sr d1">
+        <div class="cat-title">Ensaladas</div>
+        <div class="mi"><div><div class="mi-name">Ensalada Griega</div></div><div class="mi-price">10 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d2">
+        <div class="cat-title">Aperitivos Frios</div>
+        <div class="mi"><div><div class="mi-name">Tzatziki</div><div class="mi-desc">Yogur griego, pepino y ajo</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Tyrokafteri</div><div class="mi-desc">Dip de queso feta</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Melitzanosalat</div><div class="mi-desc">Dip de berenjena</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Houmous</div><div class="mi-desc">Dip de garbanzos</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Eleopolto</div><div class="mi-desc">Pasta de aceitunas negras</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Pikilia Krya</div><div class="mi-desc">Seleccion de 5 salsas frias con pan de pita</div></div><div class="mi-price">11 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d3">
+        <div class="cat-title">Aperitivos Calientes</div>
+        <div class="mi"><div><div class="mi-name">Feta Fournou</div><div class="mi-desc">Queso feta al horno, ligeramente picante</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Dolmadakia</div><div class="mi-desc">Hojas de parra rellenas de arroz</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Spanakopitakia</div><div class="mi-desc">Pasteles de queso y espinacas</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Tyrotipakia</div><div class="mi-desc">Pasteles de queso feta</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Vegetarian Crooquettea</div></div><div class="mi-price">5 €</div></div>
+        <div class="mi"><div><div class="mi-name">Gyro</div><div class="mi-desc">Pan de pita con tzatziki</div></div><div class="mi-price">7 €</div></div>
+        <div class="mi"><div><div class="mi-name">Pikilia Zesti Mixt Starters</div><div class="mi-desc">Seleccion de aperitivos calientes</div></div><div class="mi-price">14 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d1">
+        <div class="cat-title">Vegetariano</div>
+        <div class="mi"><div><div class="mi-name">Spanakopita</div><div class="mi-desc">Espinacas y queso feta, al horno</div></div><div class="mi-price">8 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d2">
+        <div class="cat-title">Del Mar</div>
+        <div class="mi"><div><div class="mi-name">Thalassina Floge</div><div class="mi-desc">Gambas envueltas en pasta filo al horno</div></div><div class="mi-price">16 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d3">
+        <div class="cat-title">Carne de Res</div>
+        <div class="mi"><div><div class="mi-name">Moussaka</div><div class="mi-desc">Carne picada entre capas de berenjena</div></div><div class="mi-price">14 €</div></div>
+        <div class="mi"><div><div class="mi-name">Greek Hamburger</div><div class="mi-desc">Pan de pita, tzatziki y papas fritas</div></div><div class="mi-price">10 €</div></div>
+        <div class="mi"><div><div class="mi-name">Entrecote</div></div><div class="mi-price">16 €</div></div>
+        <div class="mi"><div><div class="mi-name">Souvlaki</div><div class="mi-desc">Brocheta de carne</div></div><div class="mi-price">16 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d1">
+        <div class="cat-title">Cordero</div>
+        <div class="mi"><div><div class="mi-name">Kleftiko</div><div class="mi-desc">Pierna o paletilla cocinada lentamente al horno</div></div><div class="mi-price">18 €</div></div>
+        <div class="mi"><div><div class="mi-name">Arni Flogera</div><div class="mi-desc">Cordero en masa filo, horneado</div></div><div class="mi-price">16 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d2">
+        <div class="cat-title">Cerdo</div>
+        <div class="mi"><div><div class="mi-name">Gyros</div><div class="mi-desc">Kebab de cerdo</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Solomillo en un pincho</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Dendrolivano</div><div class="mi-desc">Medallones de cerdo en salsa de romero</div></div><div class="mi-price">12 €</div></div>
+      </div>
+
+      <div class="menu-cat sr d3">
+        <div class="cat-title">Pollo</div>
+        <div class="mi"><div><div class="mi-name">Gyros Plate</div><div class="mi-desc">Kebab de pollo</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Riganalo</div><div class="mi-desc">Pechuga en salsa de vino blanco y feta</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Chicken Flogera</div><div class="mi-desc">Wrap de pechuga, tomate seco, feta y pesto en masa filo</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Souvlaki</div><div class="mi-desc">Brocheta de pollo</div></div><div class="mi-price">12 €</div></div>
+        <div class="mi"><div><div class="mi-name">Pechugas de Pollo</div></div><div class="mi-price">8 €</div></div>
+      </div>
+
+      <!-- MEZZE FULL WIDTH -->
+      <div class="mezze-card sr">
+        <div class="mezze-t">Mezze para Dos</div>
+        <div class="mezze-p">36 €</div>
+        <div class="mezze-items">
+          Pikilia Krya &nbsp;·&nbsp; Pikilia Zesti &nbsp;·&nbsp; Moussaka<br>
+          Ensalada Griega &nbsp;·&nbsp; Desierta
+        </div>
+        <p style="color:rgba(187,216,255,0.5);font-family:'Playfair Display',serif;font-style:italic;font-size:0.82rem;margin-top:0.8rem;">El menu degustacion perfecto para compartir</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     SERVICIOS
+════════════════════════════════════════════════════════ -->
+<section id="servicios">
+  <div class="inner">
+    <div class="sr">
+      <p class="sec-label">Lo que ofrecemos</p>
+      <h2 class="sec-title">Servicios & <span>Contacto</span></h2>
+      <div class="sec-rule"><div class="dot"></div></div>
+    </div>
+
+    <div class="serv-grid">
+      <div class="serv-card sr d1">
+        <div class="serv-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="serv-name">Terraza Griega</div>
+        <div class="serv-desc">Disfruta al aire libre bajo el sol de Murcia con ambiente mediterraneo</div>
+      </div>
+      <div class="serv-card sr d2">
+        <div class="serv-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <div class="serv-name">Tronas</div>
+        <div class="serv-desc">Adaptados para los mas pequeños de la familia</div>
+      </div>
+      <div class="serv-card sr d3">
+        <div class="serv-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        </div>
+        <div class="serv-name">Celebraciones</div>
+        <div class="serv-desc">Perfecto para reuniones familiares y eventos especiales</div>
+      </div>
+      <div class="serv-card sr d4">
+        <div class="serv-icon">
+          <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-2.16-1.06-3.71-2.47-5.12C12.1 8.41 9.4 7.66 7.5 7.66c-3.57 0-6.5 2.94-6.5 6.5v.83h15.03v-.83z"/></svg>
+        </div>
+        <div class="serv-name">Cocina Artesanal</div>
+        <div class="serv-desc">Recetas tradicionales griegas con producto local de calidad</div>
+      </div>
+    </div>
+
+    <div class="contact-band sr">
+      <div class="ci">
+        <div class="ci-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="ci-label">Direccion</div>
+          <div class="ci-val"><a href="https://maps.google.com/?q=Restaurante+El+Paraiso+Fortuna+Murcia" target="_blank">Ctra. Pinoso, 79 · 30626 Fortuna, Murcia</a></div>
+        </div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div>
+          <div class="ci-label">Telefono</div>
+          <div class="ci-val"><a href="tel:+34685597296">685 59 72 96</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     RESEÑAS
+════════════════════════════════════════════════════════ -->
+<section id="resenas">
+  <div class="inner">
+    <div class="sr">
+      <p class="sec-label">Lo que dicen nuestros clientes</p>
+      <h2 class="sec-title">Resenas de <span>Google</span></h2>
+      <div class="sec-rule"><div class="dot"></div></div>
+    </div>
+
+    <!-- Rating horizontal bar -->
+    <div class="rating-bar sr">
+      <div class="rating-circle-wrap">
+        <div class="r-ring" id="rRing">
+          <svg viewBox="0 0 140 140"><circle class="r-bg" cx="70" cy="70" r="60"/><circle class="r-fg" cx="70" cy="70" r="60"/></svg>
+          <div class="r-inner">
+            <div class="r-num">4.8</div>
+            <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="r-badge">Google Reviews</div>
+      </div>
+      <div class="r-summary">
+        <div class="r-summary-num">4.8 / 5</div>
+        <div class="r-stars" style="font-size:1.4rem;margin:0.4rem 0;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="r-label" style="font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.14em;color:var(--blue-deep);font-weight:700;">Valoracion Media</div>
+        <div class="r-summary-text">Basado en resenas verificadas de clientes en Google Maps. Experiencia autentica griega en el corazon de Fortuna.</div>
+      </div>
+    </div>
+
+    <!-- 3 reviews horizontal -->
+    <div class="reviews-cols">
+      <div class="rev-card sr d1">
+        <div class="rev-name">Paola Acosta</div>
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">"Un descubrimiento espectacular. La comida deliciosa y la atencion de 10. Los platos generosos y a buen precio. Aldo muy majo y siempre pendiente de que estuviesemos bien atendidos. Seguro volveremos con mas amigos y lo tendremos en cuenta para celebraciones."</div>
+      </div>
+      <div class="rev-card sr d2">
+        <div class="rev-name">Cristina Sanchez</div>
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">"El plato del cordero y el otro plato principal de pechuga de pollo espectaculares. De entrantes las bolitas de queso estaban increibles. La atencion impecable. Muchas gracias, volvere."</div>
+      </div>
+      <div class="rev-card sr d3">
+        <div class="rev-name">Adolfo Varo</div>
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">"Es la primera vez que venimos a comer a un restaurante griego. Esta todo muy bueno. Pedimos el menu degustacion y no pudimos terminarlo todo. Es muy economico. Comimos fuera y se podia estar bien. Recomendable al 100%."</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a class="add-rev" href="https://www.google.com/search?sa=X&sca_esv=1cd8785de84224e8&rlz=1C1CHBF_esES921ES921&sxsrf=ANbL-n7FWF0gt0sIkLmb4ni2rbzcSfF7ew:1776977806376&q=opiniones%20de%20restaurante%20el%20para%C3%ADso%20fortuna&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ2NDMxtLA0NTA0s7S0NLQ0MtvAyPiKUSe_IDMvMz8vtVghJVWhKLW4JLG0KDGvJFUhNUehILEo8fDa4nyFtPyiktK8xEWsJCkHAGCXxFp5AAAA&rldimm=11316418950169991926&tbm=lcl&hl=es-ES&ved=0CAcQ5foLahcKEwj4sKaX7oSUAxUAAAAAHQAAAAAQBg&biw=1600&bih=742&dpr=1.2&safe=active&ssui=on#lkt=LocalPoiReviews&arid=Ci9DQUlRQUNvZENodHljRjlvT2xkTU9XUnpUbkp5WkU0NFJVVXRXalpvWDFVNFJsRRAB&lrd=0xd638f0061a874b1:0x9d0bff1406619af6,3,,,," target="_blank" rel="noopener">
+        Dejar una Resena en Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     UBICACION
+════════════════════════════════════════════════════════ -->
+<section id="ubicacion">
+  <div class="inner">
+    <div class="sr">
+      <p class="sec-label">Como llegar</p>
+      <h2 class="sec-title">Nuestra <span>Ubicacion</span></h2>
+      <div class="sec-rule"><div class="dot"></div></div>
+    </div>
+
+    <div class="map-wrap sr">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.7!2d-1.1305!3d38.2043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd638f0061a874b1%3A0x9d0bff1406619af6!2sRestaurante%20El%20Para%C3%ADso!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicacion Restaurante El Paraiso">
+      </iframe>
+      <div class="map-foot">
+        <div class="map-addr">
+          <strong>Direccion</strong>
+          Ctra. Pinoso, 79 · 30626 Fortuna, Murcia
+        </div>
+        <a class="map-btn" href="https://maps.google.com/?q=Restaurante+El+Paraiso+Ctra+Pinoso+79+Fortuna+Murcia" target="_blank">Como llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     RESERVAR
+════════════════════════════════════════════════════════ -->
+<section id="reservar">
+  <div class="inner">
+    <div class="res-inner sr">
+      <p class="sec-label">Reserve su mesa</p>
+      <h2 class="sec-title">Haz tu <span>Reserva</span></h2>
+      <div class="sec-rule" style="justify-content:center;"><div class="dot"></div></div>
+      <p class="res-tagline">Llamanos y reserva tu mesa. Te esperamos con los brazos abiertos para ofrecerte una experiencia griega autentica.</p>
+      <a href="tel:+34685597296" class="res-phone">685 59 72 96</a>
+      <div class="res-ctas">
+        <a href="tel:+34685597296" class="btn-neon">Llamar Ahora</a>
+        <a href="https://wa.me/34685597296" class="btn-neon gold-btn" target="_blank">WhatsApp</a>
+      </div>
+      <p class="res-note" style="margin-top:1.5rem;">Ctra. Pinoso, 79 · Fortuna, Murcia</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="ft-logo">Restaurante El Paraiso</div>
+  <div class="ft-sub">Un pedacito de Grecia en Fortuna, Murcia · Ctra. Pinoso, 79</div>
+  <div class="ft-copy">2025 El Paraiso · Todos los derechos reservados</div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════ -->
+<script>
+// ── Splash ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('gone');
+  }, 3200);
+});
+
+// ── Mobile menu ──
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+document.addEventListener('click', e => {
+  if(!e.target.closest('nav') && !e.target.closest('#mobMenu')) closeMob();
+});
+
+// ── Scroll Reveal ──
+const srEls = document.querySelectorAll('.sr');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:0.1, rootMargin:'0px 0px -36px 0px'});
+srEls.forEach(el => io.observe(el));
+
+// ── Rating ring animation ──
+const ringEl = document.getElementById('rRing');
+const ringObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('go'); ringObs.disconnect(); }});
+}, {threshold:0.5});
+if(ringEl) ringObs.observe(ringEl);
+</script>
+</body>
+</html>
